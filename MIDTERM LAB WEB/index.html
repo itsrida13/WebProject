@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Website</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Smooth Scroll -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="https://themes.muffingroup.com/be/finance/wp-content/uploads/2015/01/retina-finance.png" alt="Logo">
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Offer</a></li>
+        <!-- ✅ Scroll to Testimonials Section -->
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="checkout.html" class="buy-btn">Buy now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Maintain financial flow<br>and invest wisely</h1>
+      <p>Version proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin.</p>
+      <a href="checkout.html" class="cta-btn">See Offer</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://themes.muffingroup.com/be/finance/wp-content/uploads/2015/01/home_finance_slider2.jpg" alt="Finance Hero">
+    </div>
+  </section>
+
+  <!-- ✅ Customer Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <h2 class="section-title">💬 Client Testimonials</h2>
+
+    <div class="testimonials-container">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Customer 1" class="testimonial-img">
+        <h4>Ryda E Zainab</h4>
+        <div class="stars">★★★★★</div>
+        <p>“i have received very good guidance.Masha Allah I am more confident about my investments now. thanks!”</p>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Customer 2" class="testimonial-img">
+        <h4>Hassan Ali</h4>
+        <div class="stars">★★★★☆</div>
+        <p>“I gained the best experience and it helps me professionally”</p>
+      </div>
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/25.jpg" alt="Customer 3" class="testimonial-img">
+        <h4>Aliyan Haider</h4>
+        <div class="stars">★★★★☆</div>
+        <p>“I am fully satisfied”</p>
+      </div>
+
+      <!-- Hidden Testimonials -->
+      <div class="testimonial-card hidden">
+        <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Customer 4" class="testimonial-img">
+        <h4>Janeeta Iqbal</h4>
+        <div class="stars">★★★★★</div>
+        <p>“Best experience,my all financial problems has been solved”</p>
+      </div>
+      <div class="testimonial-card hidden">
+        <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Customer 5" class="testimonial-img">
+        <h4>Ayesha Ali</h4>
+        <div class="stars">★★★★★</div>
+        <p>“I feel more confident about it ”</p>
+      </div>
+    
+
+      <div class="testimonial-card hidden">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer 6" class="testimonial-img">
+        <h4>Qasim Ali</h4>
+        <div class="stars">★★★★★</div>
+        <p>“I have received the best and effiecient services ”</p>
+      </div>
+    </div>
+
+    
+
+    <div class="text-center">
+      <button class="view-more-btn" id="viewMoreBtn">View More</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h5>About Us</h5>
+        <p>We provide top financial services and investment guidance to help you grow your wealth.</p>
+      </div>
+
+      <div class="footer-column">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Offer</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Contact</h5>
+        <p>Email: support@finance.com</p>
+        <p>Phone: +92 300 1234567</p>
+        <p>Address: Lahore, Pakistan</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <small>© 2025 Finance Website. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.getElementById("viewMoreBtn").addEventListener("click", function() {
+      const hiddenTestimonials = document.querySelectorAll(".testimonial-card.hidden");
+      hiddenTestimonials.forEach(card => {
+        card.classList.toggle("show");
+      });
+
+      // Toggle button text
+      if (this.innerText === "View More") {
+        this.innerText = "View Less";
+      } else {
+        this.innerText = "View More";
+      }
+    });
+  </script>
+
+</body>
+</html>
