@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finance Website</title>
+
+  <!-- Keep your existing stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Bootstrap CSS (v5) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* local styles for CRUD panel + toast container */
+    #testimonialsSection { display: none; margin-top: 30px; }
+    #toastContainer { position: fixed; top: 16px; right: 16px; z-index: 1080; }
+    .spinner-overlay {
+      position: absolute;
+      inset: 0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(255,255,255,0.7);
+      z-index: 20;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="https://themes.muffingroup.com/be/finance/wp-content/uploads/2015/01/retina-finance.png" alt="Logo">
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html" id="homeLink">Home</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Offer</a></li>
+        <li><a href="#" id="testimonialsLink">Testimonials</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="checkout.html" class="buy-btn">Buy now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Maintain financial flow<br>and invest wisely</h1>
+      <p>Version proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin.</p>
+      <a href="checkout.html" class="cta-btn">See Offer</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://themes.muffingroup.com/be/finance/wp-content/uploads/2015/01/home_finance_slider2.jpg" alt="Finance Hero">
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS CRUD SECTION -->
+  <section id="testimonialsSection" class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-primary">Testimonials — Manage (CRUD)</h2>
+        <p class="text-muted">Add, edit, view and delete testimonials (demo using JSONPlaceholder).</p>
+      </div>
+    </div>
+
+    <div class="row position-relative">
+      <!-- Loading overlay -->
+      <div id="loadingOverlay" class="spinner-overlay" style="display:none;">
+        <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
+      </div>
+
+      <!-- Left: Form -->
+      <div class="col-lg-4 col-md-12 mt-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 id="formTitle">Add Testimonial</h5>
+            <div id="formAlert"></div>
+
+            <form id="testimonialForm" novalidate>
+              <input type="hidden" id="testimonialId" value="">
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input id="name" type="text" class="form-control" required minlength="2" placeholder="Customer name">
+                <div class="invalid-feedback">Name required (min 2 chars)</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Message</label>
+                <textarea id="message" class="form-control" rows="5" required minlength="5" placeholder="Their feedback"></textarea>
+                <div class="invalid-feedback">Message required (min 5 chars)</div>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button id="saveBtn" class="btn btn-primary" type="submit">Add Testimonial</button>
+                <button id="cancelEditBtn" type="button" class="btn btn-outline-secondary" style="display:none;">Cancel Edit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="mt-2">
+          <small class="text-muted">Demo API: <code>https://jsonplaceholder.typicode.com/posts</code></small>
+        </div>
+      </div>
+
+      <!-- Right: Table -->
+      <div class="col-lg-8 col-md-12 mt-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0">Testimonials List</h5>
+              <div><button id="refreshBtn" class="btn btn-sm btn-outline-primary">Refresh</button></div>
+            </div>
+
+            <div id="listAlert"></div>
+
+            <div class="table-responsive">
+              <table class="table table-hover" id="testimonialsTable">
+                <thead>
+                  <tr>
+                    <th style="width:5%;">#</th>
+                    <th style="width:20%;">Name</th>
+                    <th>Message</th>
+                    <th style="width:18%;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div id="noData" class="text-center text-muted" style="display:none;">No testimonials found.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h5>About Us</h5>
+        <p>We provide top financial services and investment guidance to help you grow your wealth.</p>
+      </div>
+
+      <div class="footer-column">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Offer</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Contact</h5>
+        <p>Email: support@finance.com</p>
+        <p>Phone: +92 300 1234567</p>
+        <p>Address: Lahore, Pakistan</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <small>© 2025 Finance Website. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- Toast container -->
+  <div id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- jQuery + Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Testimonials CRUD script -->
+  <script>
+    (function($) {
+      const API_BASE = 'https://jsonplaceholder.typicode.com/posts';
+
+      // helpers
+      function showLoading(flag) { $('#loadingOverlay').toggle(flag); }
+
+      function showToast(msg, type='success') {
+        const id = 't' + Date.now();
+        const toastHTML = '<div id="' + id + '" class="toast align-items-center text-bg-' + type + ' border-0" role="alert" aria-live="assertive" aria-atomic="true">' +
+                          '<div class="d-flex">' +
+                          '<div class="toast-body">' + $('<div>').text(msg).html() + '</div>' +
+                          '<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>' +
+                          '</div></div>';
+        $('#toastContainer').append(toastHTML);
+        const el = document.getElementById(id);
+        new bootstrap.Toast(el, { delay: 3000 }).show();
+        el.addEventListener('hidden.bs.toast', function() { $(this).remove(); });
+      }
+
+      function showAlert(container, message, type='danger') {
+        const html = '<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">' +
+                     $('<div>').text(message).html() +
+                     '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        $(container).html(html);
+      }
+
+      // CRUD operations
+      function loadTestimonials() {
+        showLoading(true);
+        $('#testimonialsTable tbody').empty();
+        $('#noData').hide();
+        $('#listAlert').empty();
+
+        $.ajax({
+          url: API_BASE + '?_limit=10',
+          method: 'GET',
+          success: function(data) { renderTestimonials(data); showLoading(false); },
+          error: function() { showLoading(false); showAlert('#listAlert', 'Failed to load testimonials.'); }
+        });
+      }
+
+      function renderTestimonials(items) {
+        const tbody = $('#testimonialsTable tbody');
+        tbody.empty();
+        if (!items || items.length === 0) { $('#noData').show(); return; }
+        $('#noData').hide();
+        items.forEach(function(item, idx) {
+          const shortMsg = item.body.length > 160 ? item.body.substring(0,160) + '...' : item.body;
+          const tr = $('<tr>').attr('data-id', item.id)
+                   .append($('<td>').text(idx + 1))
+                   .append($('<td>').text(item.title))
+                   .append($('<td>').text(shortMsg))
+                   .append($('<td>').html('<button class="btn btn-sm btn-outline-success me-1 editBtn">Edit</button>' +
+                                           '<button class="btn btn-sm btn-outline-danger deleteBtn">Delete</button>'));
+          tbody.append(tr);
+        });
+      }
+
+      function createTestimonial(payload) {
+        showLoading(true);
+        $.ajax({
+          url: API_BASE,
+          method: 'POST',
+          data: JSON.stringify(payload),
+          contentType: 'application/json; charset=UTF-8',
+          success: function(data) {
+            showToast('Testimonial added ✅', 'success');
+            const newItem = { id: data.id || Date.now(), title: payload.title, body: payload.body };
+            const existing = $('#testimonialsTable tbody tr').map(function() {
+              return { id: $(this).data('id'), title: $(this).children().eq(1).text(), body: $(this).children().eq(2).text() };
+            }).get();
+            renderTestimonials([newItem].concat(existing).slice(0,10));
+            $('#testimonialForm')[0].reset();
+            showLoading(false);
+          },
+          error: function() { showLoading(false); showAlert('#formAlert', 'Failed to add testimonial.'); }
+        });
+      }
+
+      function updateTestimonial(id, payload) {
+        showLoading(true);
+        $.ajax({
+          url: API_BASE + '/' + id,
+          method: 'PUT',
+          data: JSON.stringify(payload),
+          contentType: 'application/json; charset=UTF-8',
+          success: function() {
+            showToast('Testimonial updated ✏️', 'info');
+            const row = $('#testimonialsTable tbody tr').filter(function(){ return $(this).data('id') == id; });
+            row.children().eq(1).text(payload.title);
+            row.children().eq(2).text(payload.body.length>160?payload.body.substring(0,160)+'...':payload.body);
+            exitEditMode();
+            showLoading(false);
+          },
+          error: function() { showLoading(false); showAlert('#formAlert', 'Failed to update testimonial.'); }
+        });
+      }
+
+      function deleteTestimonial(id) {
+        showLoading(true);
+        $.ajax({
+          url: API_BASE + '/' + id,
+          method: 'DELETE',
+          success: function() {
+            showToast('Testimonial deleted 🗑️', 'warning');
+            $('#testimonialsTable tbody tr').filter(function(){ return $(this).data('id')==id; }).remove();
+            $('#testimonialsTable tbody tr').each(function(i){ $(this).children().first().text(i+1); });
+            showLoading(false);
+          },
+          error: function() { showLoading(false); showAlert('#listAlert', 'Failed to delete testimonial.'); }
+        });
+      }
+
+      // Form helpers
+      function enterEditMode(id, title, body) {
+        $('#testimonialId').val(id);
+        $('#name').val(title);
+        $('#message').val(body);
+        $('#formTitle').text('Edit Testimonial');
+        $('#saveBtn').text('Update Testimonial');
+        $('#cancelEditBtn').show();
+        $('html, body').animate({ scrollTop: $('#testimonialsSection').offset().top - 60 }, 300);
+      }
+
+      function exitEditMode() {
+        $('#testimonialId').val('');
+        $('#testimonialForm')[0].reset();
+        $('#formTitle').text('Add Testimonial');
+        $('#saveBtn').text('Add Testimonial');
+        $('#cancelEditBtn').hide();
+        $('#formAlert').empty();
+      }
+
+      // events
+      $(function() {
+        $('#testimonialsLink').on('click', function(e) {
+          e.preventDefault();
+          $('#testimonialsSection').show();
+          exitEditMode();
+          $('#listAlert').empty();
+          $('#noData').hide();
+          $('#testimonialsTable tbody').empty();
+          $('html, body').animate({ scrollTop: $('#testimonialsSection').offset().top - 60 }, 400);
+          loadTestimonials();
+        });
+
+        $('#homeLink').on('click', function() { $('#testimonialsSection').hide(); });
+
+        $('#refreshBtn').on('click', function(){ loadTestimonials(); });
+
+        $('#testimonialForm').on('submit', function(e) {
+          e.preventDefault();
+          $('#formAlert').empty();
+          const title = $('#name').val().trim();
+          const body = $('#message').val().trim();
+          if (title.length < 2) { showAlert('#formAlert', 'Name must be at least 2 characters.'); return; }
+          if (body.length < 5) { showAlert('#formAlert', 'Message must be at least 5 characters.'); return; }
+          const id = $('#testimonialId').val();
+          const payload = { title, body, userId: 1 };
+          if (!id) createTestimonial(payload);
+          else updateTestimonial(id, payload);
+        });
+
+        $('#cancelEditBtn').on('click', function(){ exitEditMode(); });
+
+        $('#testimonialsTable').on('click', '.editBtn', function() {
+          const row = $(this).closest('tr');
+          const id = row.data('id');
+          const title = row.children().eq(1).text();
+          const body = row.children().eq(2).text();
+          enterEditMode(id, title, body);
+        });
+
+        $('#testimonialsTable').on('click', '.deleteBtn', function() {
+          const row = $(this).closest('tr');
+          const id = row.data('id');
+          if (!confirm('Delete this testimonial?')) return;
+          deleteTestimonial(id);
+        });
+
+        if (window.location.hash === '#testimonials') { $('#testimonialsLink').trigger('click'); }
+      });
+    })(jQuery);
+  </script>
+</body>
+</html>
