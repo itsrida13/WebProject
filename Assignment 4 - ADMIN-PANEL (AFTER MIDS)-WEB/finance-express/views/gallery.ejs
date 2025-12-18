@@ -1,0 +1,82 @@
+<section class="gallery-hero">
+  <div class="gallery-hero-inner">
+    <h1>Gallery</h1>
+    <p>Explore our latest collection. Click any item to view details.</p>
+
+    <form class="gallery-search" method="GET" action="/gallery">
+      <input
+        class="form-input"
+        type="text"
+        name="q"
+        placeholder="Search artworks..."
+        value="<%= typeof q !== 'undefined' ? q : '' %>"
+      />
+      <button class="gallery-btn" type="submit">Search</button>
+      <a class="gallery-btn outline" href="/gallery">Reset</a>
+    </form>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="gallery-container">
+
+    <% const items =
+        (typeof artworks !== 'undefined' && artworks && artworks.length) ? artworks :
+        (typeof galleryItems !== 'undefined' && galleryItems && galleryItems.length) ? galleryItems :
+        []; %>
+
+    <% if (!items || items.length === 0) { %>
+      <div class="gallery-empty">
+        <h2>No items found</h2>
+        <p>Try a different search keyword.</p>
+        <a class="cta-btn" href="/menu">Browse Products</a>
+      </div>
+    <% } else { %>
+
+      <div class="gallery-grid">
+        <% items.forEach((item) => { %>
+          <article class="gallery-card">
+            <a class="gallery-img-wrap" href="<%= item.link || ('/product/' + item._id) %>">
+              <img
+                src="<%= item.image || item.imageUrl || '/images/placeholder.jpg' %>"
+                alt="<%= item.title || item.name || 'Artwork' %>"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="gallery-view">View</span>
+              </div>
+            </a>
+
+            <div class="gallery-info">
+              <h3 class="gallery-title"><%= item.title || item.name || 'Untitled' %></h3>
+              <p class="gallery-desc">
+                <%= item.description ? item.description : 'Premium curated selection for Finance Express.' %>
+              </p>
+
+              <div class="gallery-bottom">
+                <% if (item.price !== undefined) { %>
+                  <div class="gallery-price">
+                    <span class="price-label">Price</span>
+                    <span class="price-amount">$<%= item.price %></span>
+                  </div>
+                <% } else { %>
+                  <div class="gallery-price">
+                    <span class="price-label">Category</span>
+                    <span class="gallery-tag"><%= item.category || 'Collection' %></span>
+                  </div>
+                <% } %>
+
+                <a class="add-cart-btn" href="<%= item.link || ('/product/' + item._id) %>">
+                  View Details
+                </a>
+              </div>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+
+    <% } %>
+  </div>
+</section>
+
+
