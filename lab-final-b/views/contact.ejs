@@ -1,0 +1,511 @@
+<!-- Hero Section -->
+<div class="contact-hero">
+  <h1>Get in Touch</h1>
+  <p>We'd love to hear from you. Send us a message!</p>
+</div>
+
+<!-- Contact Container -->
+<div class="contact-container">
+  <div id="alertBox" class="alert-box"></div>
+
+  <div class="contact-grid">
+    <!-- Contact Form -->
+    <div class="contact-form-section">
+      <h2>Send us a Message</h2>
+      <p class="subtitle">Fill out the form below and we'll get back to you as soon as possible</p>
+
+      <form id="contactForm">
+        <div class="form-group">
+          <label>Your Name <span class="required">*</span></label>
+          <input type="text" class="form-input" id="name" placeholder="John Doe">
+          <span class="error-message" id="nameError">Please enter your name (min 3 characters)</span>
+          <span class="success-message" id="nameSuccess">✓ Looks good!</span>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address <span class="required">*</span></label>
+          <input type="email" class="form-input" id="email" placeholder="john.doe@example.com">
+          <span class="error-message" id="emailError">Please enter a valid email address</span>
+          <span class="success-message" id="emailSuccess">✓ Email is valid</span>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number <span class="required">*</span></label>
+          <input type="tel" class="form-input" id="phone" placeholder="+92 300 1234567">
+          <span class="error-message" id="phoneError">Please enter a valid phone number</span>
+          <span class="success-message" id="phoneSuccess">✓ Phone number is valid</span>
+        </div>
+
+        <div class="form-group">
+          <label>Subject <span class="required">*</span></label>
+          <input type="text" class="form-input" id="subject" placeholder="How can we help you?">
+          <span class="error-message" id="subjectError">Please enter a subject (min 5 characters)</span>
+          <span class="success-message" id="subjectSuccess">✓ Valid</span>
+        </div>
+
+        <div class="form-group">
+          <label>Message <span class="required">*</span></label>
+          <textarea class="form-textarea" id="message" placeholder="Write your message here..."></textarea>
+          <span class="error-message" id="messageError">Please enter your message (min 20 characters)</span>
+          <span class="success-message" id="messageSuccess">✓ Message looks good</span>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="contact-info-section">
+      <div class="info-card">
+        <div class="info-icon">
+          <svg fill="#00bcd4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </div>
+        <div class="info-content">
+          <h3>Email Us</h3>
+          <p><a href="mailto:support@finance.com">support@finance.com</a></p>
+          <p><a href="mailto:info@finance.com">info@finance.com</a></p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <svg fill="#00bcd4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </div>
+        <div class="info-content">
+          <h3>Call Us</h3>
+          <p><a href="tel:+923001234567">+92 300 1234567</a></p>
+          <p><a href="tel:+923211234567">+92 321 1234567</a></p>
+          <p style="font-size: 13px; color: #999; margin-top: 5px;">Mon-Fri: 9:00 AM - 6:00 PM</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <svg fill="#00bcd4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+        <div class="info-content">
+          <h3>Visit Us</h3>
+          <p>123 Finance Street<br>Gulberg III, Lahore<br>Punjab, Pakistan - 54000</p>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.5424855268657!2d74.35302931516665!3d31.517630681363913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904f1c45a77ad%3A0xc3076f3d17da5e23!2sGulberg%20III%2C%20Lahore!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Feedback Section -->
+<div class="feedback-section">
+  <div class="feedback-container">
+    <h2>How was your experience?</h2>
+    <p>We value your feedback! Help us improve our services by sharing your thoughts.</p>
+    <button class="feedback-btn" id="feedbackBtn">Give Feedback</button>
+  </div>
+</div>
+
+<!-- Feedback Modal -->
+<div class="feedback-modal" id="feedbackModal">
+  <div class="feedback-modal-content">
+    <button class="close-modal" id="closeModal">&times;</button>
+    <h2>Share Your Feedback</h2>
+    <p class="subtitle">We'd love to hear about your experience with us</p>
+
+    <form id="feedbackForm">
+      <div class="rating-container">
+        <label>Rate Your Experience <span class="required">*</span></label>
+        <div class="stars-rating" id="starsRating">
+          <span class="star" data-rating="1">★</span>
+          <span class="star" data-rating="2">★</span>
+          <span class="star" data-rating="3">★</span>
+          <span class="star" data-rating="4">★</span>
+          <span class="star" data-rating="5">★</span>
+        </div>
+        <input type="hidden" id="rating" value="0">
+        <span class="error-message" id="ratingError">Please select a rating</span>
+      </div>
+
+      <div class="form-group">
+        <label>Your Name <span class="required">*</span></label>
+        <input type="text" class="form-input" id="feedbackName" placeholder="John Doe">
+        <span class="error-message" id="feedbackNameError">Please enter your name (min 3 characters)</span>
+        <span class="success-message" id="feedbackNameSuccess">✓ Valid</span>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address <span class="required">*</span></label>
+        <input type="email" class="form-input" id="feedbackEmail" placeholder="john.doe@example.com">
+        <span class="error-message" id="feedbackEmailError">Please enter a valid email</span>
+        <span class="success-message" id="feedbackEmailSuccess">✓ Valid</span>
+      </div>
+
+      <div class="form-group">
+        <label>Your Feedback <span class="required">*</span></label>
+        <textarea class="form-textarea" id="feedbackMessage" placeholder="Tell us about your experience..." style="min-height: 120px;"></textarea>
+        <span class="error-message" id="feedbackMessageError">Please enter your feedback (min 10 characters)</span>
+        <span class="success-message" id="feedbackMessageSuccess">✓ Thank you!</span>
+      </div>
+
+      <button type="submit" class="submit-btn" id="feedbackSubmitBtn">Submit Feedback</button>
+    </form>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all form elements
+  const contactForm = document.getElementById('contactForm');
+  const feedbackForm = document.getElementById('feedbackForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const feedbackSubmitBtn = document.getElementById('feedbackSubmitBtn');
+  const alertBox = document.getElementById('alertBox');
+  const feedbackModal = document.getElementById('feedbackModal');
+  const feedbackBtn = document.getElementById('feedbackBtn');
+  const closeModal = document.getElementById('closeModal');
+  const ratingInput = document.getElementById('rating');
+  const stars = document.querySelectorAll('.star');
+
+  // ============================================
+  // CONTACT FORM VALIDATION FUNCTIONS
+  // ============================================
+  
+  function validateName() {
+    const input = document.getElementById('name');
+    const value = input.value.trim();
+    const error = document.getElementById('nameError');
+    const success = document.getElementById('nameSuccess');
+
+    if (value === '' || value.length < 3 || !/^[a-zA-Z\s]+$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateEmail() {
+    const input = document.getElementById('email');
+    const value = input.value.trim();
+    const error = document.getElementById('emailError');
+    const success = document.getElementById('emailSuccess');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (value === '' || !emailRegex.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validatePhone() {
+    const input = document.getElementById('phone');
+    const value = input.value.trim().replace(/[\s\-\(\)]/g, '');
+    const error = document.getElementById('phoneError');
+    const success = document.getElementById('phoneSuccess');
+
+    if (value === '' || !/^[\+]?[0-9]{10,15}$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateSubject() {
+    const input = document.getElementById('subject');
+    const value = input.value.trim();
+    const error = document.getElementById('subjectError');
+    const success = document.getElementById('subjectSuccess');
+
+    if (value === '' || value.length < 5) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateMessage() {
+    const input = document.getElementById('message');
+    const value = input.value.trim();
+    const error = document.getElementById('messageError');
+    const success = document.getElementById('messageSuccess');
+
+    if (value === '' || value.length < 20) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  // ============================================
+  // FEEDBACK FORM VALIDATION FUNCTIONS
+  // ============================================
+
+  function validateRating() {
+    const rating = ratingInput.value;
+    const error = document.getElementById('ratingError');
+
+    if (rating === '0') {
+      error.classList.add('show');
+      return false;
+    } else {
+      error.classList.remove('show');
+      return true;
+    }
+  }
+
+  function validateFeedbackName() {
+    const input = document.getElementById('feedbackName');
+    const value = input.value.trim();
+    const error = document.getElementById('feedbackNameError');
+    const success = document.getElementById('feedbackNameSuccess');
+
+    if (value === '' || value.length < 3) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateFeedbackEmail() {
+    const input = document.getElementById('feedbackEmail');
+    const value = input.value.trim();
+    const error = document.getElementById('feedbackEmailError');
+    const success = document.getElementById('feedbackEmailSuccess');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (value === '' || !emailRegex.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateFeedbackMessage() {
+    const input = document.getElementById('feedbackMessage');
+    const value = input.value.trim();
+    const error = document.getElementById('feedbackMessageError');
+    const success = document.getElementById('feedbackMessageSuccess');
+
+    if (value === '' || value.length < 10) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  // ============================================
+  // REAL-TIME VALIDATION LISTENERS
+  // ============================================
+
+  // Contact form listeners
+  document.getElementById('name').addEventListener('blur', validateName);
+  document.getElementById('email').addEventListener('blur', validateEmail);
+  document.getElementById('phone').addEventListener('blur', validatePhone);
+  document.getElementById('subject').addEventListener('blur', validateSubject);
+  document.getElementById('message').addEventListener('blur', validateMessage);
+
+  // Feedback form listeners
+  document.getElementById('feedbackName').addEventListener('blur', validateFeedbackName);
+  document.getElementById('feedbackEmail').addEventListener('blur', validateFeedbackEmail);
+  document.getElementById('feedbackMessage').addEventListener('blur', validateFeedbackMessage);
+
+  // ============================================
+  // CONTACT FORM SUBMIT
+  // ============================================
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const isValid = validateName() && validateEmail() && validatePhone() && validateSubject() && validateMessage();
+
+    if (isValid) {
+      alertBox.textContent = '✅ Message sent successfully! We will get back to you soon.';
+      alertBox.className = 'alert-box success show';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      setTimeout(() => {
+        contactForm.reset();
+        document.querySelectorAll('.form-input, .form-textarea').forEach(el => {
+          el.classList.remove('success', 'error');
+        });
+        document.querySelectorAll('.success-message, .error-message').forEach(el => {
+          el.classList.remove('show');
+        });
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        
+        setTimeout(() => {
+          alertBox.classList.remove('show');
+        }, 5000);
+      }, 2000);
+    } else {
+      alertBox.textContent = '⚠️ Please fill all required fields correctly.';
+      alertBox.className = 'alert-box error show';
+      
+      const firstError = document.querySelector('.form-input.error, .form-textarea.error');
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstError.focus();
+      }
+    }
+  });
+
+  // ============================================
+  // FEEDBACK MODAL CONTROLS
+  // ============================================
+
+  // Open feedback modal
+  feedbackBtn.addEventListener('click', () => {
+    feedbackModal.classList.add('show');
+    console.log('Feedback modal opened'); // Debug log
+  });
+
+  // Close modal with X button
+  closeModal.addEventListener('click', () => {
+    feedbackModal.classList.remove('show');
+  });
+
+  // Close modal when clicking outside
+  feedbackModal.addEventListener('click', (e) => {
+    if (e.target === feedbackModal) {
+      feedbackModal.classList.remove('show');
+    }
+  });
+
+  // ============================================
+  // STAR RATING SYSTEM
+  // ============================================
+
+  stars.forEach(star => {
+    star.addEventListener('click', function() {
+      const rating = this.getAttribute('data-rating');
+      ratingInput.value = rating;
+      
+      // Remove active class from all stars
+      stars.forEach(s => s.classList.remove('active'));
+      
+      // Add active class to selected stars
+      for (let i = 0; i < rating; i++) {
+        stars[i].classList.add('active');
+      }
+      
+      // Hide error message
+      document.getElementById('ratingError').classList.remove('show');
+    });
+  });
+
+  // ============================================
+  // FEEDBACK FORM SUBMIT
+  // ============================================
+
+  feedbackForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const isValid = validateRating() && validateFeedbackName() && validateFeedbackEmail() && validateFeedbackMessage();
+
+    if (isValid) {
+      feedbackSubmitBtn.disabled = true;
+      feedbackSubmitBtn.textContent = 'Submitting...';
+
+      setTimeout(() => {
+        alert('✅ Thank you for your feedback! We appreciate your input.');
+        feedbackModal.classList.remove('show');
+        feedbackForm.reset();
+        ratingInput.value = '0';
+        stars.forEach(s => s.classList.remove('active'));
+        
+        // Reset form styles
+        document.querySelectorAll('#feedbackForm .form-input, #feedbackForm .form-textarea').forEach(el => {
+          el.classList.remove('success', 'error');
+        });
+        document.querySelectorAll('#feedbackForm .success-message, #feedbackForm .error-message').forEach(el => {
+          el.classList.remove('show');
+        });
+        
+        feedbackSubmitBtn.disabled = false;
+        feedbackSubmitBtn.textContent = 'Submit Feedback';
+      }, 1500);
+    } else {
+      const firstError = document.querySelector('#feedbackForm .form-input.error, #feedbackForm .form-textarea.error');
+      if (firstError) {
+        firstError.focus();
+      }
+    }
+  });
+});
+</script>

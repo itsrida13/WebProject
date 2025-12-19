@@ -1,0 +1,686 @@
+<!-- views/checkout.ejs -->
+
+<div class="checkout-container">
+  <h1 style="font-size: 32px; color: #333; margin-bottom: 10px;">Checkout</h1>
+  <p style="color: #777; font-size: 16px;">Complete your order to get started with our financial services</p>
+
+  <div id="alertBox" class="alert-box"></div>
+
+  <div class="checkout-grid">
+    <!-- Left Side - Forms -->
+    <div>
+      <!-- Billing Information -->
+      <div class="checkout-section">
+        <h2 class="section-header">📋 Billing Information</h2>
+        <form id="checkoutForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name <span class="required">*</span></label>
+              <input type="text" class="form-input" id="firstName" placeholder="John">
+              <span class="error-message" id="firstNameError">Please enter your first name (min 2 characters)</span>
+              <span class="success-message" id="firstNameSuccess">✓ Looks good!</span>
+            </div>
+
+            <div class="form-group">
+              <label>Last Name <span class="required">*</span></label>
+              <input type="text" class="form-input" id="lastName" placeholder="Doe">
+              <span class="error-message" id="lastNameError">Please enter your last name (min 2 characters)</span>
+              <span class="success-message" id="lastNameSuccess">✓ Valid!</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address <span class="required">*</span></label>
+            <input type="email" class="form-input" id="email" placeholder="john.doe@example.com">
+            <span class="error-message" id="emailError">Please enter a valid email address</span>
+            <span class="success-message" id="emailSuccess">✓ Email is valid</span>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number <span class="required">*</span></label>
+            <input type="tel" class="form-input" id="phone" placeholder="+92 300 1234567">
+            <span class="error-message" id="phoneError">Please enter a valid phone number (numbers only)</span>
+            <span class="success-message" id="phoneSuccess">✓ Phone number is valid</span>
+          </div>
+
+          <div class="form-group">
+            <label>Street Address <span class="required">*</span></label>
+            <input type="text" class="form-input" id="address" placeholder="123 Finance Street, Building 5">
+            <span class="error-message" id="addressError">Please enter your complete address</span>
+            <span class="success-message" id="addressSuccess">✓ Address is valid</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>City <span class="required">*</span></label>
+              <input type="text" class="form-input" id="city" placeholder="Lahore">
+              <span class="error-message" id="cityError">Please enter your city</span>
+              <span class="success-message" id="citySuccess">✓ Valid</span>
+            </div>
+
+            <div class="form-group">
+              <label>Postal Code <span class="required">*</span></label>
+              <input type="text" class="form-input" id="postal" placeholder="54000">
+              <span class="error-message" id="postalError">Enter 4-6 digit postal code</span>
+              <span class="success-message" id="postalSuccess">✓ Valid</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Country <span class="required">*</span></label>
+            <input type="text" class="form-input" id="country" placeholder="Pakistan" value="Pakistan">
+            <span class="error-message" id="countryError">Please enter your country</span>
+            <span class="success-message" id="countrySuccess">✓ Valid</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="checkout-section" style="margin-top: 30px;">
+        <h2 class="section-header">💳 Payment Method</h2>
+        
+        <div class="payment-methods">
+          <div class="payment-option">
+            <input type="radio" name="payment" id="creditCard" value="card" checked>
+            <label class="payment-label" for="creditCard">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="5" width="20" height="14" rx="2" stroke="#00bcd4" stroke-width="2"/>
+                <path d="M2 10H22" stroke="#00bcd4" stroke-width="2"/>
+              </svg>
+              <span>Credit Card</span>
+            </label>
+          </div>
+
+          <div class="payment-option">
+            <input type="radio" name="payment" id="paypal" value="paypal">
+            <label class="payment-label" for="paypal">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 8H17C18.66 8 20 9.34 20 11V13C20 14.66 18.66 16 17 16H7" stroke="#00bcd4" stroke-width="2"/>
+                <path d="M7 12H17" stroke="#00bcd4" stroke-width="2"/>
+              </svg>
+              <span>PayPal</span>
+            </label>
+          </div>
+
+          <div class="payment-option">
+            <input type="radio" name="payment" id="cod" value="cod">
+            <label class="payment-label" for="cod">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C9.243 2 7 4.243 7 7C7 9.757 9.243 12 12 12C14.757 12 17 9.757 17 7C17 4.243 14.757 2 12 2Z" stroke="#00bcd4" stroke-width="2"/>
+                <path d="M5 20V18C5 15.791 6.791 14 9 14H15C17.209 14 19 15.791 19 18V20" stroke="#00bcd4" stroke-width="2"/>
+              </svg>
+              <span>Cash on Delivery</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Card Details (shown only when card is selected) -->
+        <div class="card-fields" id="cardFields">
+          <div class="form-group">
+            <label>Card Number <span class="required">*</span></label>
+            <input type="text" class="form-input" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+            <span class="error-message" id="cardNumberError">Please enter a valid 16-digit card number</span>
+            <span class="success-message" id="cardNumberSuccess">✓ Card number is valid</span>
+          </div>
+
+          <div class="form-group">
+            <label>Cardholder Name <span class="required">*</span></label>
+            <input type="text" class="form-input" id="cardName" placeholder="JOHN DOE">
+            <span class="error-message" id="cardNameError">Please enter the name on card</span>
+            <span class="success-message" id="cardNameSuccess">✓ Valid</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Expiry Date <span class="required">*</span></label>
+              <input type="text" class="form-input" id="expiry" placeholder="MM/YY" maxlength="5">
+              <span class="error-message" id="expiryError">Format: MM/YY</span>
+              <span class="success-message" id="expirySuccess">✓ Valid</span>
+            </div>
+
+            <div class="form-group">
+              <label>CVV <span class="required">*</span></label>
+              <input type="password" class="form-input" id="cvv" placeholder="123" maxlength="4">
+              <span class="error-message" id="cvvError">Enter 3 or 4 digit CVV</span>
+              <span class="success-message" id="cvvSuccess">✓ Valid</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - Order Summary -->
+    <div>
+      <div class="order-summary">
+        <h2 class="section-header">Order Summary</h2>
+
+        <!-- Dynamic Cart Items Container -->
+        <div id="orderItemsContainer">
+          <!-- Items will be loaded here dynamically -->
+        </div>
+
+        <!-- Empty Cart Message -->
+        <div id="emptyCartMessage" style="display: none; text-align: center; padding: 40px 20px;">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" style="margin: 0 auto 15px;">
+            <path d="M9 2C9 1.44772 9.44772 1 10 1H14C14.5523 1 15 1.44772 15 2V4H20C20.5523 4 21 4.44772 21 5C21 5.55228 20.5523 6 20 6H19.9199L19 19C19 20.6569 17.6569 22 16 22H8C6.34315 22 5 20.6569 5 19L4.08008 6H4C3.44772 6 3 5.55228 3 5C3 4.44772 3.44772 4 4 4H9V2Z" stroke="#ddd" stroke-width="2"/>
+          </svg>
+          <p style="color: #999; margin: 0 0 20px;">Your cart is empty</p>
+          <a href="/menu" style="display: inline-block; padding: 10px 20px; background: #00bcd4; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Go Shopping</a>
+        </div>
+
+        <div class="order-total">
+          <div class="total-row">
+            <span>Subtotal</span>
+            <span id="subtotalDisplay">Rs. 0</span>
+          </div>
+          <div class="total-row">
+            <span>Tax (5%)</span>
+            <span id="taxDisplay">Rs. 0</span>
+          </div>
+          <div class="total-row">
+            <span>Shipping</span>
+            <span style="color: #27ae60;">FREE</span>
+          </div>
+          <div class="total-row final">
+            <span>Total</span>
+            <span id="totalDisplay">Rs. 0</span>
+          </div>
+        </div>
+
+        <button type="button" class="place-order-btn" id="placeOrderBtn" disabled>
+          <span id="orderBtnText">Place Order - Rs. 0</span>
+        </button>
+
+        <p style="text-align: center; font-size: 12px; color: #777; margin-top: 15px;">
+          🔒 Your payment information is secure and encrypted
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('checkoutForm');
+  const placeOrderBtn = document.getElementById('placeOrderBtn');
+  const alertBox = document.getElementById('alertBox');
+  const cardFields = document.getElementById('cardFields');
+
+  // store totals so we can send them to backend
+  let subtotalValue = 0;
+  let taxValue = 0;
+  let totalValue = 0;
+
+  // Load cart items and display in order summary
+  loadCartItems();
+
+  function loadCartItems() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderItemsContainer = document.getElementById('orderItemsContainer');
+    const emptyCartMessage = document.getElementById('emptyCartMessage');
+    
+    if (cart.length === 0) {
+      orderItemsContainer.style.display = 'none';
+      emptyCartMessage.style.display = 'block';
+      placeOrderBtn.disabled = true;
+      return;
+    }
+
+    orderItemsContainer.style.display = 'block';
+    emptyCartMessage.style.display = 'none';
+    placeOrderBtn.disabled = false;
+
+    // Calculate totals
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const tax = subtotal * 0.05;
+    const total = subtotal + tax;
+
+    // save totals for later (when we send to backend)
+    subtotalValue = subtotal;
+    taxValue = tax;
+    totalValue = total;
+
+    // Display cart items
+    orderItemsContainer.innerHTML = cart.map(item => `
+      <div class="order-item">
+        <div class="item-image-wrapper">
+          <img src="${item.image}" alt="${item.name}" class="item-image-small">
+          <span class="item-quantity-badge">${item.quantity}x</span>
+        </div>
+        <div class="item-details">
+          <h4>${item.name}</h4>
+          <p>Rs. ${item.price.toLocaleString()} each</p>
+        </div>
+        <div class="item-price">Rs. ${(item.price * item.quantity).toLocaleString()}</div>
+      </div>
+    `).join('');
+
+    // Update totals in UI
+    document.getElementById('subtotalDisplay').textContent = `Rs. ${subtotal.toLocaleString()}`;
+    document.getElementById('taxDisplay').textContent = `Rs. ${tax.toLocaleString()}`;
+    document.getElementById('totalDisplay').textContent = `Rs. ${total.toLocaleString()}`;
+    document.getElementById('orderBtnText').textContent = `Place Order - Rs. ${total.toLocaleString()}`;
+  }
+
+  // Payment method toggle
+  document.querySelectorAll('input[name="payment"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      if (this.value === 'card') {
+        cardFields.classList.add('show');
+      } else {
+        cardFields.classList.remove('show');
+      }
+    });
+  });
+
+  // Initialize card fields visibility
+  if (document.getElementById('creditCard').checked) {
+    cardFields.classList.add('show');
+  }
+
+  // ==== validation functions (unchanged) ====
+  function validateFirstName() {
+    const input = document.getElementById('firstName');
+    const value = input.value.trim();
+    const error = document.getElementById('firstNameError');
+    const success = document.getElementById('firstNameSuccess');
+
+    if (value === '') {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else if (value.length < 2) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.textContent = 'Name should contain only letters';
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateLastName() {
+    const input = document.getElementById('lastName');
+    const value = input.value.trim();
+    const error = document.getElementById('lastNameError');
+    const success = document.getElementById('lastNameSuccess');
+
+    if (value === '' || value.length < 2 || !/^[a-zA-Z\s]+$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateEmail() {
+    const input = document.getElementById('email');
+    const value = input.value.trim();
+    const error = document.getElementById('emailError');
+    const success = document.getElementById('emailSuccess');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (value === '' || !emailRegex.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validatePhone() {
+    const input = document.getElementById('phone');
+    const value = input.value.trim().replace(/[\s\-\(\)]/g, '');
+    const error = document.getElementById('phoneError');
+    const success = document.getElementById('phoneSuccess');
+
+    if (value === '' || !/^[\+]?[0-9]{10,15}$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateAddress() {
+    const input = document.getElementById('address');
+    const value = input.value.trim();
+    const error = document.getElementById('addressError');
+    const success = document.getElementById('addressSuccess');
+
+    if (value === '' || value.length < 5) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateCity() {
+    const input = document.getElementById('city');
+    const value = input.value.trim();
+    const error = document.getElementById('cityError');
+    const success = document.getElementById('citySuccess');
+
+    if (value === '' || !/^[a-zA-Z\s]+$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validatePostal() {
+    const input = document.getElementById('postal');
+    const value = input.value.trim();
+    const error = document.getElementById('postalError');
+    const success = document.getElementById('postalSuccess');
+
+    if (value === '' || !/^[0-9]{4,6}$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateCountry() {
+    const input = document.getElementById('country');
+    const value = input.value.trim();
+    const error = document.getElementById('countryError');
+    const success = document.getElementById('countrySuccess');
+
+    if (value === '' || !/^[a-zA-Z\s]+$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateCardNumber() {
+    const input = document.getElementById('cardNumber');
+    const value = input.value.replace(/\s/g, '');
+    const error = document.getElementById('cardNumberError');
+    const success = document.getElementById('cardNumberSuccess');
+
+    if (value === '' || !/^[0-9]{16}$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateCardName() {
+    const input = document.getElementById('cardName');
+    const value = input.value.trim();
+    const error = document.getElementById('cardNameError');
+    const success = document.getElementById('cardNameSuccess');
+
+    if (value === '' || value.length < 3) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateExpiry() {
+    const input = document.getElementById('expiry');
+    const value = input.value.trim();
+    const error = document.getElementById('expiryError');
+    const success = document.getElementById('expirySuccess');
+    const expiryRegex = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
+
+    if (value === '' || !expiryRegex.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  function validateCVV() {
+    const input = document.getElementById('cvv');
+    const value = input.value.trim();
+    const error = document.getElementById('cvvError');
+    const success = document.getElementById('cvvSuccess');
+
+    if (value === '' || !/^[0-9]{3,4}$/.test(value)) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      error.classList.add('show');
+      success.classList.remove('show');
+      return false;
+    } else {
+      input.classList.remove('error');
+      input.classList.add('success');
+      error.classList.remove('show');
+      success.classList.add('show');
+      return true;
+    }
+  }
+
+  // Auto-format card number
+  document.getElementById('cardNumber').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\s/g, '');
+    value = value.replace(/[^0-9]/g, '');
+    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+    e.target.value = formattedValue;
+  });
+
+  // Auto-format expiry date
+  document.getElementById('expiry').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+      value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    e.target.value = value;
+  });
+
+  // Real-time validation on blur
+  document.getElementById('firstName').addEventListener('blur', validateFirstName);
+  document.getElementById('lastName').addEventListener('blur', validateLastName);
+  document.getElementById('email').addEventListener('blur', validateEmail);
+  document.getElementById('phone').addEventListener('blur', validatePhone);
+  document.getElementById('address').addEventListener('blur', validateAddress);
+  document.getElementById('city').addEventListener('blur', validateCity);
+  document.getElementById('postal').addEventListener('blur', validatePostal);
+  document.getElementById('country').addEventListener('blur', validateCountry);
+  document.getElementById('cardNumber').addEventListener('blur', validateCardNumber);
+  document.getElementById('cardName').addEventListener('blur', validateCardName);
+  document.getElementById('expiry').addEventListener('blur', validateExpiry);
+  document.getElementById('cvv').addEventListener('blur', validateCVV);
+
+  // Place Order Button
+  placeOrderBtn.addEventListener('click', function() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (cart.length === 0) {
+      alertBox.textContent = '⚠️ Your cart is empty. Please add items before checkout.';
+      alertBox.className = 'alert-box error show';
+      return;
+    }
+
+    const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+    
+    // Validate billing fields
+    const billingValid = 
+      validateFirstName() &&
+      validateLastName() &&
+      validateEmail() &&
+      validatePhone() &&
+      validateAddress() &&
+      validateCity() &&
+      validatePostal() &&
+      validateCountry();
+
+    let paymentValid = true;
+    
+    // Validate card fields only if card payment is selected
+    if (paymentMethod === 'card') {
+      paymentValid = 
+        validateCardNumber() &&
+        validateCardName() &&
+        validateExpiry() &&
+        validateCVV();
+    }
+
+    if (billingValid && paymentValid) {
+      // Build order data to send to backend
+      const orderData = {
+        items: cart,
+        billing: {
+          firstName: document.getElementById('firstName').value.trim(),
+          lastName: document.getElementById('lastName').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          phone: document.getElementById('phone').value.trim(),
+          address: document.getElementById('address').value.trim(),
+          city: document.getElementById('city').value.trim(),
+          postal: document.getElementById('postal').value.trim(),
+          country: document.getElementById('country').value.trim()
+        },
+        paymentMethod: paymentMethod,
+        subtotal: subtotalValue,
+        tax: taxValue,
+        total: totalValue
+      };
+
+      alertBox.textContent = '⏳ Placing your order...';
+      alertBox.className = 'alert-box success show';
+      placeOrderBtn.disabled = true;
+      placeOrderBtn.innerHTML = '<span>Processing...</span>';
+
+      // Send to backend to save in MongoDB
+      fetch('/order/confirm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderData)
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to place order');
+        }
+        return res.json();
+      })
+      .then(data => {
+        alertBox.textContent = '✅ Order placed successfully! Redirecting...';
+        alertBox.className = 'alert-box success show';
+
+        // Clear cart after successful order
+        localStorage.removeItem('cart');
+
+        setTimeout(() => {
+          window.location.href = '/thankyou';
+        }, 1500);
+      })
+      .catch(err => {
+        console.error(err);
+        alertBox.textContent = '❌ Something went wrong while placing your order. Please try again.';
+        alertBox.className = 'alert-box error show';
+        placeOrderBtn.disabled = false;
+        document.getElementById('orderBtnText').textContent = `Place Order - Rs. ${totalValue.toLocaleString()}`;
+      });
+
+    } else {
+      // Error
+      alertBox.textContent = '⚠️ Please fill all required fields correctly before placing your order.';
+      alertBox.className = 'alert-box error show';
+      
+      // Scroll to first error
+      const firstError = document.querySelector('.form-input.error');
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstError.focus();
+      }
+    }
+  });
+});
+</script>

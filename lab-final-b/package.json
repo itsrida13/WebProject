@@ -1,0 +1,28 @@
+{
+  "name": "finance-express",
+  "version": "1.0.0",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "seed": "node backend/data/seedAdmin.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
+}

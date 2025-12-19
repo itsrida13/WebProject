@@ -1,0 +1,197 @@
+<!-- views/order-preview.ejs -->
+
+<style>
+  .preview-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  .preview-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  .preview-header {
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  .preview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .item-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  .item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  .totals-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+  }
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #666;
+  }
+  .grand-total {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+  }
+  .discount-form {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+  }
+  .discount-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .btn-apply {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn-confirm {
+    width: 100%;
+    padding: 15px;
+    background: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+  }
+  .btn-confirm:hover {
+    background: #0097a7;
+  }
+  .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+  .back-link {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #00bcd4;
+    text-decoration: none;
+  }
+
+  .view-orders-btn {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px 18px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #00bcd4;
+    color: #00bcd4;
+    background: #f8feff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .view-orders-btn:hover {
+    background: #00bcd4;
+    color: #fff;
+  }
+</style>
+
+<div class="preview-container">
+  <div class="preview-card">
+    <div class="preview-header">
+      <h1>Order Preview</h1>
+      <p>Review and finalize your order</p>
+    </div>
+
+    <div class="cart-summary">
+      <% cartItems.forEach(item => { %>
+        <div class="preview-item">
+          <div class="item-info">
+            <img src="<%= item.image %>" class="item-img" alt="<%= item.name %>">
+            <div>
+              <h4><%= item.name %></h4>
+              <p>Qty: <%= item.quantity %></p>
+            </div>
+          </div>
+          <div class="item-price">
+            Rs. <%= (item.price * item.quantity).toLocaleString() %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+    <form action="/order/preview" method="GET" class="discount-form">
+      <input
+        type="text"
+        name="coupon"
+        class="discount-input"
+        placeholder="Enter Coupon Code (e.g. SAVE10)"
+        value="<%= discountCode || '' %>">
+      <button type="submit" class="btn-apply">Apply</button>
+    </form>
+
+    <% if (discountCode && discount > 0) { %>
+      <div class="alert-success">
+        ✅ Coupon <%= discountCode %> applied! You saved Rs. <%= discount.toLocaleString() %>
+      </div>
+    <% } %>
+
+    <div class="totals-section">
+      <div class="total-row">
+        <span>Subtotal</span>
+        <span>Rs. <%= subtotal.toLocaleString() %></span>
+      </div>
+      <div class="total-row">
+        <span>Discount</span>
+        <span>- Rs. <%= discount.toLocaleString() %></span>
+      </div>
+      <div class="total-row grand-total">
+        <span>Grand Total</span>
+        <span>Rs. <%= grandTotal.toLocaleString() %></span>
+      </div>
+    </div>
+
+    <!-- Main action: go to checkout -->
+    <a href="/checkout" class="btn-confirm">Proceed to Checkout</a>
+
+    <!-- Optional: view orders + back -->
+    <a href="/order/my-orders" class="view-orders-btn">View My Orders</a>
+    <a href="/cart" class="back-link">← Go Back to Cart</a>
+  </div>
+</div>
